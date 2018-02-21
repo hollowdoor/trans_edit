@@ -33,5 +33,17 @@
   },
   "devDependencies": {
     "minimist": "^1.2.0"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollowdoor/trans_edit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hollowdoor/trans_edit/issues"
+  },
+  "homepage": "https://github.com/hollowdoor/trans_edit#readme"
 }
