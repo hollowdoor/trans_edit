@@ -26,7 +26,9 @@ class View {
         });
     }
     clean(){
-        return !this._cleaned && this.pathname
+        return this._cleaned
+        ? Promise.resolve(true)
+        :(!this._cleaned && this.pathname)
         ? unlink(this.pathname)
         .then(v=>(this._cleaned = true))
         : Promise.resolve(false);

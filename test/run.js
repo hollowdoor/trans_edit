@@ -12,12 +12,6 @@ view(argv.file, {app: argv.app})
 .then(complete)
 .catch(onError);
 
-//view('https://data.whicdn.com/images/199456432/superthumb.jpg', {app: argv.app})
-/*view('red.png', {app: 'gimp'})
-.read()
-.then(complete)
-.catch(onError);*/
-
 function complete({content, type}){
     console.log('type ', type)
     if(!/^image/.test(type)){
