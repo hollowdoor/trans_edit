@@ -1,5 +1,5 @@
 const view = require('./lib/view');
-const { readFile } = require('./lib/fs.js');
+const { readFile, unlink } = require('./lib/fs.js');
 const getType = require('./lib/get_type');
 
 class View {
@@ -16,21 +16,34 @@ class View {
         this.open = open;
         this.uniq = uniq;
         this.value = value;
+        this._cleaned = false;
     }
     view(){
-        return view(this.filename, this);
+        return view(this.filename, this)
+        .then(pathname=>{
+            this.pathname = pathname;
+            return pathname;
+        });
+    }
+    clean(){
+        return !this._cleaned && this.pathname
+        ? unlink(this.pathname)
+        .then(v=>(this._cleaned = true))
+        : Promise.resolve(false);
     }
     read(options = 'utf8'){
         return this.view()
         .then(pathname=>{
             return readFile(pathname, options)
-            .then(content=>({
-                content,
-                pathname,
-                get type(){
-                    return getType(pathname);
-                }
-            }));
+            .then(content=>{
+                return {
+                    content,
+                    pathname,
+                    get type(){
+                        return getType(pathname);
+                    }
+                };
+            });
         });
     }
     stream(options){
