@@ -1,0 +1,37 @@
+{
+  "name": "trans-edit",
+  "version": "1.0.0",
+  "description": "Open an editor/viewer for a file",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && node run.js"
+  },
+  "keywords": [
+    "edit",
+    "file",
+    "fs",
+    "stream",
+    "text"
+  ],
+  "author": "Quentin Engles <hollowdoor99@gmail.com> (https://hollowdoor.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "file-type": "^7.6.0",
+    "got": "^8.2.0",
+    "hasha": "^3.0.0",
+    "into-stream": "^3.1.0",
+    "is-promise": "^2.1.0",
+    "is-stream": "^1.1.0",
+    "is-url": "^1.2.2",
+    "mime-types": "^2.1.18",
+    "opn": "^5.2.0",
+    "read-chunk": "^2.1.0",
+    "request": "^2.83.0",
+    "temp-dir": "^1.0.0",
+    "unique-string": "^1.0.0"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.0"
+  }
+}
