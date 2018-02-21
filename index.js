@@ -1,6 +1,6 @@
 const view = require('./lib/view');
 const { readFile, unlink } = require('./lib/fs.js');
-const getType = require('./lib/get_type');
+const readResult = require('./lib/read_result');
 
 class View {
     constructor(filename, {
@@ -38,13 +38,10 @@ class View {
         .then(pathname=>{
             return readFile(pathname, options)
             .then(content=>{
-                return {
-                    content,
+                return readResult({
                     pathname,
-                    get type(){
-                        return getType(pathname);
-                    }
-                };
+                    content
+                });
             });
         });
     }
